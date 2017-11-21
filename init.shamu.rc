@@ -32,6 +32,10 @@ on init
 
     symlink /sdcard /storage/sdcard0
 
+on charger
+    load_all_props
+    start qcom-post-boot
+
 on fs
     mount_all fstab.shamu
 
@@ -433,6 +437,7 @@ service adspd /system/bin/adspd /dev/ttyHS3
    socket adspdsock stream 0660 media media
    user media
    group media input
+   disabled
 
 on property:sys.boot_completed=1
     start qcom-post-boot
@@ -491,6 +496,7 @@ service time_daemon /system/bin/time_daemon
    user root
    group root
    writepid /dev/cpuset/system-background/tasks
+   disabled
 
 on property:init.svc.bootanim=stopped
     start usf-post-boot
@@ -541,10 +547,12 @@ on property:ro.mdm_helper_proxy_req=true
 on property:init.svc.ril-daemon=running
     setprop ro.mdm_helper_proxy_req true
 
+# Disabled for Mer
 service atfwd /system/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
+    disabled
 
 service cnd /system/bin/cnd
     class late_start

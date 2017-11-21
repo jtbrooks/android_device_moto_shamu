@@ -285,7 +285,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Camera configuration
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-    camera.disable_zsl_mode=0
+    camera.disable_zsl_mode=0 \
+    persist.camera.shutter.disable=1 \
+    camera.fifo.disable=1
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.camera.HAL3.enabled=1
