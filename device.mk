@@ -434,3 +434,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # OEM Unlock reporting
 ADDITIONAL_DEFAULT_PROPERTIES += \
     ro.oem_unlock_supported=1
+
+# Ubuntu Overlay Files
+#
+PRODUCT_COPY_FILES += \
+	device/moto/shamu/ubuntu/70-shamu.rules:/usr/lib/lxc-android-config/70-shamu.rules \
+	device/moto/shamu/ubuntu/shamu.conf:/etc/ubuntu-touch-session.d/shamu.conf
